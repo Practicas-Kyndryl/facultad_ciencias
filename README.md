@@ -1,7 +1,7 @@
 #@ facultad_ciencias
 # Topología de la Facultad de Ciencias 
 
-![](images/image.png)
+![](images/topo_facultad.png)
 
 # Descripcion de la topología
 
@@ -29,4 +29,8 @@ La DMZ (o zona desmilitarizada) actúa como una nueva capa de seguridad impidien
 
 Por último tendremos un router que conecta con el resto de departamentos de la Facultad.
 
+# Excepciones de la topología
 
+Para implementar la topología en ContainerLab la vamos a "aligerar" para que pueda funcionar correctamente y el ordenador sea capaz de mover la topología sin problema. 
+
+Primero sólo pondremos un host en cada leaf 
