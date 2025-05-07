@@ -33,4 +33,4 @@ Por último tendremos un router que conecta con el resto de departamentos de la 
 
 Para implementar la topología en ContainerLab la vamos a "aligerar" para que pueda funcionar correctamente y el ordenador sea capaz de mover la topología sin problema. 
 
-Primero sólo pondremos un host en cada leaf 
+Primero sólo pondremos un host en cada leaf. Utilizaremos un router en el punto de acceso inalámbrico ya que no tenemos ese dispositivo para ContainerLab. Los spines los cambiaremos por router ya que necesitan muchos recursos muchos recursos para funcionar. 
