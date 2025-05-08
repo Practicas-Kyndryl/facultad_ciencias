@@ -6,7 +6,7 @@
 - Creación de README.md del proyecto 
 - Creación de todos los archivos de configuración de los dispositivos: conf, conf_b_leafs, conf_spines, conf_leafs
 - Creación de yml principal del proyecto
-
+- Creación del archivo de .gitignore
 
 # Cristhian
 - Creación del documento de arquitectura de facultad_ciencias 
