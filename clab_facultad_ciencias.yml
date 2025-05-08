@@ -1,0 +1,64 @@
+name: facultad_ciencias
+topology:
+    nodes:
+        S1:
+            kind: cisco_iol
+            image: vrnetlab/cisco_iol:1.0.0
+            startup-config: conf_spines/S1.partial.conf
+
+        S2:
+            kind: cisco_iol
+            image: vrnetlab/cisco_iol:1.0.0
+            startup-config: conf_spines/S2.partial.conf
+
+        r1:
+            kind: cisco_iol
+            image: vrnetlab/cisco_iol:1.0.0
+            startup-config: conf/R1.partial.conf
+
+        r2:
+            kind: cisco_iol
+            image: vrnetlab/cisco_iol:1.0.0
+            startup-config: conf/R2.partial.conf
+
+        L1:
+            kind  : cisco_iol
+            image: vrnetlab/cisco_iol:L2-1.0.0
+            type: L2
+            startup-config: conf_leafs/L1.partial.conf
+            
+        L2:
+            kind: cisco_iol
+            image: vrnetlab/cisco_iol:L2-1.0.0
+            type: L2
+            startup-config: conf_leafs/L2.partial.conf
+        L3: 
+            kind: cisco_iol
+            image: vrnetlab/cisco_iol:L2-1.0.0
+            type: L2
+            startup-config: conf_leafs/L3.partial.conf
+        L4: 
+            kind: cisco_iol
+            image: vrnetlab/cisco_iol:L2-1.0.0
+            type: L2
+            startup-config: conf_leafs/L4.partial.conf
+        B_L1:
+            kind: cisco_iol
+            image: vrnetlab/cisco_iol:L2-1.0.0
+            type: L2
+            startup-config: conf_b_leafs/B_L1.partial.conf
+        B_L2:
+            kind: cisco_iol
+            image: vrnetlab/cisco_iol:L2-1.0.0
+            type: L2
+            startup-config: conf_b_leafs/B_L2.partial.conf
+
+            
+    links:
+      - endpoints: [ "r1:Ethernet0/1", "sw1:Ethernet0/1" ]
+      - endpoints: [ "r2:Ethernet0/1", "sw1:Ethernet0/2" ]
+      - endpoints: [ "r3:Ethernet0/1", "sw1:Ethernet0/3" ]
+      - endpoints: [ "r4:Ethernet0/1", "sw3:Ethernet0/2" ]
+      - endpoints: [ "r5:Ethernet0/1", "sw3:Ethernet0/3" ]
+      - endpoints: [ "sw1:Ethernet1/0", "sw2:Ethernet0/1"]
+      - endpoints: [ "sw2:Ethernet0/2", "sw3:Ethernet0/1"]
