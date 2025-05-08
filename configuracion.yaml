@@ -1,0 +1,135 @@
+
+name: red-facultad-ciencias
+mgmt:
+  network: mgmt
+  ipv4_subnet: 172.22.0.0/24
+
+topology:
+  nodes:
+    spine1:
+      kind: srl
+      image: ghcr.io/nokia/srlinux
+      startup-config: configs/spine1.cfg.partial
+    spine2:
+      kind: srl
+      image: ghcr.io/nokia/srlinux
+      startup-config: configs/spine2.cfg.partial
+
+    leaf1:
+      kind: srl
+      image: ghcr.io/nokia/srlinux
+      startup-config: configs/leaf1.cfg.partial
+    leaf2:
+      kind: srl
+      image: ghcr.io/nokia/srlinux
+      startup-config: configs/leaf2.cfg.partial
+    leaf3:
+      kind: srl
+      image: ghcr.io/nokia/srlinux
+      startup-config: configs/leaf3.cfg.partial
+    leaf4:
+      kind: srl
+      image: ghcr.io/nokia/srlinux
+      startup-config: configs/leaf4.cfg.partial
+
+    fw1:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/fw1.cfg.partial
+    fw2:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/fw2.cfg.partial
+    r1:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/r1.cfg.partial
+    r2:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/r2.cfg.partial
+
+    srv-ftp:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/srv-ftp.cfg.partial
+    srv-bd1:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/srv-bd1.cfg.partial
+    srv-bd2:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/srv-bd2.cfg.partial
+    srv-web:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/srv-web.cfg.partial
+    srv-mail:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/srv-mail.cfg.partial
+
+    admin1:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/admin1.cfg.partial
+    admin2:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/admin2.cfg.partial
+    lab1:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/lab1.cfg.partial
+    lab2:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/lab2.cfg.partial
+    alumno1:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/alumno1.cfg.partial
+    alumno2:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/alumno2.cfg.partial
+    wifi-ap:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/wifi-ap.cfg.partial
+
+  links:
+    # Spine ↔ Leaf connections
+    - endpoints: ["spine1:e1-1", "leaf1:e1-1"]
+    - endpoints: ["spine1:e1-2", "leaf2:e1-1"]
+    - endpoints: ["spine1:e1-3", "leaf3:e1-1"]
+    - endpoints: ["spine1:e1-4", "leaf4:e1-1"]
+    - endpoints: ["spine2:e1-1", "leaf1:e1-2"]
+    - endpoints: ["spine2:e1-2", "leaf2:e1-2"]
+    - endpoints: ["spine2:e1-3", "leaf3:e1-2"]
+    - endpoints: ["spine2:e1-4", "leaf4:e1-2"]
+
+    # Leaf1: FTP, BD, Administración
+    - endpoints: ["leaf1:e1-3", "srv-ftp:eth1"]
+    - endpoints: ["leaf1:e1-4", "srv-bd1:eth1"]
+    - endpoints: ["leaf1:e1-5", "srv-bd2:eth1"]
+    - endpoints: ["leaf1:e1-6", "admin1:eth1"]
+    - endpoints: ["leaf1:e1-7", "admin2:eth1"]
+
+    # Leaf2: Laboratorios
+    - endpoints: ["leaf2:e1-3", "lab1:eth1"]
+    - endpoints: ["leaf2:e1-4", "lab2:eth1"]
+
+    # Leaf3: Alumnos + WiFi
+    - endpoints: ["leaf3:e1-3", "alumno1:eth1"]
+    - endpoints: ["leaf3:e1-4", "alumno2:eth1"]
+    - endpoints: ["leaf3:e1-5", "wifi-ap:eth1"]
+
+    # Leaf4: DMZ y borde
+    - endpoints: ["leaf4:e1-3", "srv-web:eth1"]
+    - endpoints: ["leaf4:e1-4", "srv-mail:eth1"]
+    - endpoints: ["leaf4:e1-5", "fw1:eth1"]
+    - endpoints: ["fw1:eth2", "fw2:eth1"]
+    - endpoints: ["fw2:eth2", "r2:eth1"]
+    - endpoints: ["leaf4:e1-6", "r1:eth1"]
