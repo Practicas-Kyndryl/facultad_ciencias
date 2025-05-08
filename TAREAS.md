@@ -4,9 +4,9 @@
 - Creación del repositorio "facultad_ciencias" 
 - Creación en GitHub de los archivos: TAREAS.md, facultad_ciencias_topo.pdf, license, images, .drawio y conexiones.drawio
 - Creación de README.md del proyecto 
-- Creación de todas las carpetas y todos los archivos de configuración de los dispositivos: conf, conf_b_leafs, conf_spines, conf_leafs
-- Creación de yml principal del proyecto
 - Creación del archivo de .gitignore
 
 # Cristhian
 - Creación del documento de arquitectura de facultad_ciencias 
+- Creacion del archivo yaml de configuracion 
+- Creacion de los archivos de configuracion de los dispositivos de red
