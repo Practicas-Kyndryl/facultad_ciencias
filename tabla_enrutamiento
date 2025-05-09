@@ -1,0 +1,45 @@
+
+# 📑 Tabla de Enrutamiento – Topología Leaf-Spine (con enlaces punto a punto)
+
+| Dispositivo         | Interfaz | Conectado a               | Dirección IP       | Máscara               |
+|---------------------|----------|----------------------------|--------------------|------------------------|
+| **L1 (Leaf)**        | eth0/1   | Base de datos    | 10.10.40.2         | /27 (255.255.255.224)  |
+|                     | eth0/2   | Servidor FTP               | 10.10.40.3         | /27                    |
+|                     | eth0/3   | S1                         | 192.168.1.2        | /30                    |
+|                     | eth1/0   | S2                         | 192.168.2.2        | /30                    |
+| **L2 (Leaf)**        | eth0/1   | PC Administración          | 10.10.10.2         | /27                    |
+|                     | eth0/2   | PC Laboratorios            | 10.10.20.2         | /24                    |
+|                     | eth0/3   | S1                         | 192.168.1.6        | /30                    |
+|                     | eth1/0   | S2                         | 192.168.2.6        | /30                    |
+| **L3 (Leaf)**        | eth0/1   | PC Alumnos                 | 10.10.20.101       | /24                    |
+|                     | eth0/2   | S1                         | 192.168.1.10       | /30                    |
+|                     | eth1/0   | S2                         | 192.168.2.10       | /30                    |
+| **L4 (Leaf)**        | eth0/1   | Red inalámbrica Alumnos    | -                  | -                      |
+|                     | eth0/2   | S1                         | 192.168.1.14       | /30                    |
+|                     | eth1/0   | S2                         | 192.168.2.14       | /30                    |
+| **Border Leaf L1**   | eth0/1   | S1                         | 192.168.1.18       | /30                    |
+|                     | eth0/2   | S2                         | 192.168.2.18       | /30                    |
+|                     | eth0/3   | R1 (departamentos)         | -                  | -                      |
+|                     | eth1/0   | Border Leaf L2             | -                  | -                      |
+| **Border Leaf L2**   | eth0/1   | S1                         | 192.168.1.22       | /30                    |
+|                     | eth0/2   | S2                         | 192.168.2.22       | /30                    |
+|                     | eth0/3   | Firewall 1 (DMZ)           | 10.10.50.1         | /27                    |
+|                     | eth1/0   | Border Leaf L1             | -                  | -                      |
+| **Firewall 1**       | eth0/1   | Border Leaf L2             | 10.10.50.1         | /27                    |
+|                     | eth0/2   | Servidor Web               | 10.10.50.2         | /27                    |
+|                     | eth0/3   | Servidor Correo            | 10.10.50.3         | /27                    |
+|                     | eth1/0   | Firewall 2                 | -                  | -                      |
+| **Firewall 2**       | eth0/1   | Firewall 1 (DMZ)           | -                  | -                      |
+|                     | eth0/2   | R2 (Internet)              | -                  | -                      |
+| **S1 (Spine)**       | eth0/1   | L1                         | 192.168.1.1        | /30                    |
+|                     | eth0/2   | L2                         | 192.168.1.5        | /30                    |
+|                     | eth0/3   | L3                         | 192.168.1.9        | /30                    |
+|                     | eth0/4   | L4                         | 192.168.1.13       | /30                    |
+|                     | eth0/5   | Border Leaf L1             | 192.168.1.17       | /30                    |
+|                     | eth0/6   | Border Leaf L2             | 192.168.1.21       | /30                    |
+| **S2 (Spine)**       | eth0/1   | L1                         | 192.168.2.1        | /30                    |
+|                     | eth0/2   | L2                         | 192.168.2.5        | /30                    |
+|                     | eth0/3   | L3                         | 192.168.2.9        | /30                    |
+|                     | eth0/4   | L4                         | 192.168.2.13       | /30                    |
+|                     | eth0/5   | Border Leaf L1             | 192.168.2.17       | /30                    |
+|                     | eth0/6   | Border Leaf L2             | 192.168.2.21       | /30                    |
