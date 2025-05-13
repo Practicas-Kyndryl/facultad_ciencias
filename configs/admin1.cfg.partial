@@ -1,0 +1,10 @@
+!
+enable
+configure terminal
+
+interface Ethernet0/1
+ ip address 10.10.10.2 255.255.255.224
+ no shutdown
+!
+
+end

@@ -1,0 +1,25 @@
+! Firewall 1 - eth0/1
+enable
+configure terminal
+
+interface Ethernet0/1
+ ip address 10.10.50.1 255.255.255.224
+ no shutdown
+!
+
+interface Ethernet0/2
+ ip address 10.10.50.2 255.255.255.224
+ no shutdown
+!
+
+interface Ethernet0/3
+ ip address 10.10.50.3 255.255.255.224
+ no shutdown
+!
+
+interface Ethernet1/0
+ no ip address
+ no shutdown
+!
+
+end
