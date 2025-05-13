@@ -1,0 +1,35 @@
+! S1 (Spine) - eth0/1
+enable
+configure terminal
+
+interface Ethernet0/1
+ ip address 192.168.1.1 255.255.255.252
+ no shutdown
+!
+
+interface Ethernet0/2
+ ip address 192.168.1.5 255.255.255.252
+ no shutdown
+!
+
+interface Ethernet0/3
+ ip address 192.168.1.9 255.255.255.252
+ no shutdown
+!
+
+interface Ethernet0/4
+ ip address 192.168.1.13 255.255.255.252
+ no shutdown
+!
+
+interface Ethernet0/5
+ ip address 192.168.1.17 255.255.255.252
+ no shutdown
+!
+
+interface Ethernet0/6
+ ip address 192.168.1.21 255.255.255.252
+ no shutdown
+!
+
+end

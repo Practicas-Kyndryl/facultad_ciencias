@@ -1,0 +1,25 @@
+! L1 (Leaf) - eth0/1
+enable
+configure terminal
+
+interface Ethernet0/1
+ ip address 10.10.40.2 255.255.255.224
+ no shutdown
+!
+
+interface Ethernet0/2
+ ip address 10.10.40.3 255.255.255.224
+ no shutdown
+!
+
+interface Ethernet0/3
+ ip address 192.168.1.2 255.255.255.252
+ no shutdown
+!
+
+interface Ethernet1/0
+ ip address 192.168.2.2 255.255.255.252
+ no shutdown
+!
+
+end
