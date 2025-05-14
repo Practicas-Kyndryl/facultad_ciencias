@@ -5,6 +5,7 @@
 - Creación en GitHub de los archivos: TAREAS.md, facultad_ciencias_topo.pdf, license, images, .drawio y conexiones.drawio
 - Creación de README.md del proyecto 
 - Creación del archivo de .gitignore
+- Creación de la tabla de enrutamiento
 
 # Cristhian
 - Creación del documento de arquitectura de facultad_ciencias 
