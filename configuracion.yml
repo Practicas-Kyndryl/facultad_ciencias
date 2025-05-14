@@ -41,13 +41,17 @@ topology:
       startup-config: configs/leaf-b2.cfg.partial
 
     fw1:
-      kind: linux
-      image: alpine:latest
-      startup-config: configs/fw1.cfg.partial
+      kind: fortinet_fortigate
+      image: vrnetlab/vr-fortios:fortios
+      ports:
+        - "8080:80"
+        - "8443:443"
     fw2:
-      kind: linux
-      image: alpine:latest
-      startup-config: configs/fw2.cfg.partial
+      kind: fortinet_fortigate
+      image: vrnetlab/vr-fortios:fortios
+      ports:
+        - "8090:80"
+        - "8543:443"
 
     r1:
       kind: cisco_iol
