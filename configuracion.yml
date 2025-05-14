@@ -1,7 +1,7 @@
-name: red-facultad-ciencias1
+name: red-facultad-ciencias
 mgmt:
   network: mgmt
-  ipv4_subnet: 172.22.0.0/24
+  ipv4-subnet: 172.22.0.0/24
 
 topology:
   nodes:
@@ -132,3 +132,6 @@ topology:
     - endpoints: ["r1:eth1", "leaf-b1:eth5"]
     - endpoints: ["r1:eth2", "leaf-b2:eth5"]
     - endpoints: ["r2:eth1", "fw2:eth5"]
+
+    # FW1 y FW2
+    - endpoints: ["fw1:eth3", "fw2:eth6"]
