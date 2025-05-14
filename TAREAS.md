@@ -9,5 +9,6 @@
 
 # Cristhian
 - Creación del documento de arquitectura de facultad_ciencias 
-- Creacion del archivo yaml de configuracion 
-- Creacion de los archivos de configuracion de los dispositivos de red
+- Creación del archivo yml de configuración 
+- Creación de los archivos de configuración de los dispositivos de red
+- Enrutamiento completo de la topología
