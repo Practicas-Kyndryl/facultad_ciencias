@@ -3,37 +3,37 @@ leaf-b1:
     username: admin
     password: admin
     platform: cisco_iol
-    hostname: 172.22.0.20
+    hostname: 172.22.0.8
 leaf-b2:
     username: admin
     password: admin
     platform: cisco_iol
-    hostname: 172.22.0.16
+    hostname: 172.22.0.19
 leaf1:
     username: admin
     password: admin
     platform: cisco_iol
-    hostname: 172.22.0.18
+    hostname: 172.22.0.3
 leaf2:
     username: admin
     password: admin
     platform: cisco_iol
-    hostname: 172.22.0.19
+    hostname: 172.22.0.16
 leaf3:
     username: admin
     password: admin
     platform: cisco_iol
-    hostname: 172.22.0.6
+    hostname: 172.22.0.12
 leaf4:
     username: admin
     password: admin
     platform: cisco_iol
-    hostname: 172.22.0.10
+    hostname: 172.22.0.11
 r1:
     username: admin
     password: admin
     platform: cisco_iol
-    hostname: 172.22.0.12
+    hostname: 172.22.0.20
 r2:
     username: admin
     password: admin
@@ -43,7 +43,7 @@ spine1:
     username: admin
     password: admin
     platform: cisco_iol
-    hostname: 172.22.0.15
+    hostname: 172.22.0.6
 spine2:
     username: admin
     password: admin
@@ -53,49 +53,44 @@ admin1:
     username: 
     password: 
     platform: linux
-    hostname: 172.22.0.14
+    hostname: 172.22.0.18
 alumno1:
     username: 
     password: 
     platform: linux
-    hostname: 172.22.0.21
+    hostname: 172.22.0.15
 fw1:
     username: 
     password: 
     platform: linux
-    hostname: 172.22.0.2
+    hostname: 172.22.0.10
 fw2:
     username: 
     password: 
     platform: linux
-    hostname: 172.22.0.3
+    hostname: 172.22.0.17
 lab1:
     username: 
     password: 
     platform: linux
-    hostname: 172.22.0.17
+    hostname: 172.22.0.9
 srv-bd1:
     username: 
     password: 
     platform: linux
-    hostname: 172.22.0.8
+    hostname: 172.22.0.7
 srv-ftp:
     username: 
     password: 
     platform: linux
-    hostname: 172.22.0.4
+    hostname: 172.22.0.2
 srv-mail:
     username: 
     password: 
     platform: linux
-    hostname: 172.22.0.9
+    hostname: 172.22.0.14
 srv-web:
     username: 
     password: 
     platform: linux
-    hostname: 172.22.0.7
-wifi-ap:
-    username: 
-    password: 
-    platform: linux
-    hostname: 172.22.0.11
+    hostname: 172.22.0.4

@@ -39,6 +39,12 @@ interface Ethernet0/3
 interface Ethernet1/0
  no shutdown
 !
+interface Ethernet1/1
+ no shutdown
+!
+interface Ethernet1/2
+ no shutdown
+!
 ip forward-protocol nd
 !
 ip route vrf clab-mgmt 0.0.0.0 0.0.0.0 Ethernet0/0 172.22.0.1
