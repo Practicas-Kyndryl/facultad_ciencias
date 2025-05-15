@@ -1,8 +1,7 @@
 # facultad_ciencias
 # Topología de la Facultad de Ciencias 
 
-![](facultad_ciencias_topo.pdf)
-![](images/topo_facultad.png)
+![](images/facultad_ciencias_topología.png)
 
 # Descripcion de la topología
 
@@ -36,4 +35,4 @@ Para implementar la topología en ContainerLab la vamos a "aligerar" para que pu
 
 Primero sólo pondremos un host en cada leaf. Utilizaremos un router en el punto de acceso inalámbrico ya que no tenemos ese dispositivo para ContainerLab. Los spines los cambiaremos por router ya que necesitan muchos recursos muchos recursos para funcionar. 
 
-![](facultad_ciencias_conexiones.drawio.pdf)
+![](images/facultad_ciencias_conexiones.png)
