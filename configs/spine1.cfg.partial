@@ -17,19 +17,39 @@ interface Ethernet0/3
  no shutdown
 !
 
-interface Ethernet0/4
+interface Ethernet1/0
  ip address 192.168.1.13 255.255.255.252
  no shutdown
 !
 
-interface Ethernet0/5
+interface Ethernet1/2
  ip address 192.168.1.17 255.255.255.252
  no shutdown
 !
 
-interface Ethernet0/6
+interface Ethernet1/3
  ip address 192.168.1.21 255.255.255.252
  no shutdown
 !
 
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20
+
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20
+
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20
+
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20
+ 
 end

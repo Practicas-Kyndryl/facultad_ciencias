@@ -4,13 +4,13 @@ configure terminal
 
 interface Ethernet0/1
  descripcion Conexión a Base de datos
- ip address 10.10.40.2 255.255.255.224
+ ip address 10.10.10.2 255.255.255.224
  no shutdown
 !
 
 interface Ethernet0/2
  descripcion Conexión a servidor FTP
- ip address 10.10.40.3 255.255.255.224
+ ip address 10.10.20.2 255.255.255.224
  no shutdown
 !
 
@@ -44,5 +44,28 @@ ip route 10.10.50.0 255.255.255.0
 ip route 192.168.0.0 255.255.0.0
 192.168.1.1
 !
+
+
+vlan 10
+ name ADMINISTRACION
+
+interface vlan 10 
+ ip address 10.10.10.1 255.255.255.224
+ no shutdown
+
+interface Ethernet0/1
+ switchport mode access
+ switchport access vlan 10
+
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20
+
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20
+
 
 end

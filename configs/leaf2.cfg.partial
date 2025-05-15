@@ -21,15 +21,16 @@ descripcion Conexión a Spine S2
  no shutdown
 !
 
-ip route 10.10.40.0 255.255.255.0
-192.168.1.5
-ip route 10.10.40.0 255.255.255.0
-192.168.2.5
 
 ip route 10.10.50.0 255.255.255.0
 192.168.1.5
 ip route 10.10.50.0 255.255.255.0
 192.168.2.5
+
+ip route 10.10.20.0 255.255.255.0
+192.168.1.1
+ip route 10.10.20.0 255.255.255.0
+192.168.2.1
 
 ip route 10.10.10.0 255.255.255.0
 192.168.1.5
@@ -40,5 +41,22 @@ ip route 192.168.0.0 255.255.0.0
 192.168.1.5
 
 !
+
+vlan 10
+ name ADMINISTRACION
+
+interface Ethernet0/1
+ switchport mode access
+ switchport access vlan 10
+
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20
+
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20
 
 end
