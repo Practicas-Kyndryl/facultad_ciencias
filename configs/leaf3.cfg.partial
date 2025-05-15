@@ -3,18 +3,31 @@ enable
 configure terminal
 
 interface Ethernet0/1
- ip address 10.10.20.101 255.255.255.0
+ descripcion Conexión a Laboratorio
+ ip address 10.10.20.3 255.255.255.0
  no shutdown
 !
 
 interface Ethernet0/2
+ descripcion Conexión a Spine S1
  ip address 192.168.1.10 255.255.255.252
  no shutdown
 !
 
 interface Ethernet1/0
+ descripcion Conexión a Spine S2
  ip address 192.168.2.10 255.255.255.252
  no shutdown
+!
+
+ip route 10.10.10.0 255.255.255.224
+192.168.1.9
+ip route 10.10.40.0 255.255.255.224
+192.168.1.9
+ip route 10.10.50.0 255.255.255.224
+192.168.1.9
+ip route 192.168.0.0 255.255.0.0
+192.168.1.9
 !
 
 end
