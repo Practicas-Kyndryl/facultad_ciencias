@@ -17,27 +17,37 @@ topology:
     leaf1:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:L2-1.0.0
+      type: L2
       startup-config: configs/leaf1.cfg.partial
+
     leaf2:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:L2-1.0.0
+      type: L2
       startup-config: configs/leaf2.cfg.partial
+
     leaf3:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:L2-1.0.0
+      type: L2
       startup-config: configs/leaf3.cfg.partial
+
     leaf4:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:L2-1.0.0
+      type: L2
       startup-config: configs/leaf4.cfg.partial
 
     leaf-b1:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:L2-1.0.0
+      type: L2
       startup-config: configs/leaf-b1.cfg.partial
+
     leaf-b2:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:L2-1.0.0
+      type: L2
       startup-config: configs/leaf-b2.cfg.partial
 
     fw1:
@@ -65,35 +75,64 @@ topology:
     srv-ftp:
       kind: linux
       image: alpine:latest
+      network-mode: none
+      exec: 
+        - ip link set dev eth1 up
+        - ip addr add 10.10.20.2/24 dev eth1
       startup-config: configs/srv-ftp.cfg.partial
 
     srv-bd1:
       kind: linux
       image: alpine:latest
+      network-mode: none
+      exec: 
+        - ip link set dev eth1 up
+        - ip addr add 10.10.10.2/27 dev eth1
       startup-config: configs/srv-bd1.cfg.partial
 
     srv-web:
       kind: linux
       image: alpine:latest
+      network-mode: none
+      exec: 
+        - ip link set dev eth1 up
+        - ip addr add 10.10.50.2/27 dev eth1
       startup-config: configs/srv-web.cfg.partial
+
     srv-mail:
       kind: linux
       image: alpine:latest
+      network-mode: none
+      exec: 
+        - ip link set dev eth1 up
+        - ip addr add 10.10.50.3/30 dev eth1
       startup-config: configs/srv-mail.cfg.partial
 
     admin1:
       kind: linux
       image: alpine:latest
+      network-mode: none
+      exec: 
+        - ip link set dev eth1 up
+        - ip addr add 10.10.10.3/27 dev eth1
       startup-config: configs/admin1.cfg.partial
 
     lab1:
       kind: linux
       image: alpine:latest
+      network-mode: none
+      exec: 
+        - ip link set dev eth1 up
+        - ip addr add 10.10.20.3/24 dev eth1
       startup-config: configs/lab1.cfg.partial
 
     alumno1:
       kind: linux
       image: alpine:latest
+      network-mode: none
+      exec: 
+        - ip link set dev eth1 up
+        - ip addr add 10.10.20.101/24 dev eth1
       startup-config: configs/alumno1.cfg.partial
   
   links:

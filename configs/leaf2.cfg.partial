@@ -4,7 +4,7 @@ configure terminal
 
 interface Ethernet0/1
  descripcion Conexión a PC Administración
- ip address 10.10.10.2 255.255.255.224
+ ip address 10.10.10.3 255.255.255.224
  no shutdown
 !
 
