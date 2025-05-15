@@ -4,46 +4,43 @@ configure terminal
 
 interface Ethernet0/1
  descripcion Conexión a PC Administración
+ no switchport
  ip address 10.10.10.3 255.255.255.224
  no shutdown
 !
 
-
-interface Ethernet0/3
+interface Ethernet0/2
  descripcion Conexión a Spine S1
+ no switchport
  ip address 192.168.1.6 255.255.255.252
  no shutdown
 !
 
-interface Ethernet1/0
-descripcion Conexión a Spine S2
+interface Ethernet0/3
+ descripcion Conexión a Spine S2
+ no switchport
  ip address 192.168.2.6 255.255.255.252
  no shutdown
 !
 
+ip route 10.10.50.0 255.255.255.0 192.168.1.5
+ip route 10.10.50.0 255.255.255.0 192.168.2.5
 
-ip route 10.10.50.0 255.255.255.0
-192.168.1.5
-ip route 10.10.50.0 255.255.255.0
-192.168.2.5
+ip route 10.10.20.0 255.255.255.0 192.168.1.1
+ip route 10.10.20.0 255.255.255.0 192.168.2.1
 
-ip route 10.10.20.0 255.255.255.0
-192.168.1.1
-ip route 10.10.20.0 255.255.255.0
-192.168.2.1
+ip route 10.10.10.0 255.255.255.0 192.168.1.5
+ip route 10.10.10.0 255.255.255.0 192.168.2.5
 
-ip route 10.10.10.0 255.255.255.0
-192.168.1.5
-ip route 10.10.10.0 255.255.255.0
-192.168.2.5
-
-ip route 192.168.0.0 255.255.0.0
-192.168.1.5
-
+ip route 192.168.0.0 255.255.0.0 192.168.1.5
 !
 
 vlan 10
  name ADMINISTRACION
+
+interface Vlan 10
+ ip address 10.10.10.1 255.255.255.224
+ no shutdown
 
 interface Ethernet0/1
  switchport mode access

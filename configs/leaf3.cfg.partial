@@ -4,45 +4,41 @@ configure terminal
 
 interface Ethernet0/1
  descripcion Conexión a Laboratorio
+ no switchport
  ip address 10.10.20.3 255.255.255.0
  no shutdown
 !
 
 interface Ethernet0/2
  descripcion Conexión a Spine S1
+ no switchport
  ip address 192.168.1.10 255.255.255.252
  no shutdown
 !
 
-interface Ethernet1/0
+interface Ethernet0/3
  descripcion Conexión a Spine S2
+ no switchport
  ip address 192.168.2.10 255.255.255.252
  no shutdown
 !
 
-ip route 10.10.10.0 255.255.255.224
-192.168.1.9
-ip route 10.10.10.0 255.255.255.224
-192.168.2.9
+ip route 10.10.10.0 255.255.255.224 192.168.1.9
+ip route 10.10.10.0 255.255.255.224 192.168.2.9
 
-ip route 10.10.20.0 255.255.255.0
-192.168.1.1
-ip route 10.10.20.0 255.255.255.0
-192.168.2.1
+ip route 10.10.20.0 255.255.255.0 192.168.1.1
+ip route 10.10.20.0 255.255.255.0 192.168.2.1
 
-ip route 10.10.50.0 255.255.255.224
-192.168.1.9
-ip route 10.10.50.0 255.255.255.224
-192.168.2.9
+ip route 10.10.50.0 255.255.255.224 192.168.1.9
+ip route 10.10.50.0 255.255.255.224 192.168.2.9
 
-ip route 192.168.0.0 255.255.0.0
-192.168.1.9
+ip route 192.168.0.0 255.255.0.0 192.168.1.9
 !
 
 vlan 20
  name ESTUDIANTES
 
-interface vlan 20 
+interface Vlan 20
  ip address 10.10.20.1 255.255.255.224
  no shutdown
 
@@ -59,7 +55,5 @@ interface Ethernet1/0
  switchport trunk encapsulation dot1q
  switchport mode trunk
  switchport trunk allowed vlan 10,20
- 
-! 
 
 end

@@ -105,7 +105,7 @@ topology:
       network-mode: none
       exec: 
         - ip link set dev eth1 up
-        - ip addr add 10.10.50.3/30 dev eth1
+        - ip addr add 10.10.50.3/27 dev eth1
       startup-config: configs/srv-mail.cfg.partial
 
     admin1:
