@@ -2,6 +2,7 @@
 # Topología de la Facultad de Ciencias 
 
 ![](facultad_ciencias_topo.pdf)
+![](images/topo_facultad.png)
 
 # Descripcion de la topología
 
