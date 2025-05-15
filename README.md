@@ -1,4 +1,4 @@
-#@ facultad_ciencias
+# facultad_ciencias
 # Topología de la Facultad de Ciencias 
 
 ![](facultad_ciencias_topo.pdf)
