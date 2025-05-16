@@ -18,32 +18,33 @@
 |                     | eth0/3   | S2                         | 192.168.2.14       | /30                    |
 | **Border Leaf L1**  | eth0/1   | S1                         | 192.168.1.18       | /30                    |
 |                     | eth0/2   | S2                         | 192.168.2.18       | /30                    |
-|                     | eth0/3   | R1 (departamentos)         | -                  | -                     |
-|                     | eth1/0   | Border Leaf L2             | -                  | -                     |
+|                     | eth0/3   | R1 (departamentos)         | 192.168.3.1        | /30                    |
+|                     | eth1/0   | Firewall 1                 | 192.168.8.1        | /30                    |
 | **Border Leaf L2**  | eth0/1   | S1                         | 192.168.1.22       | /30                    |
 |                     | eth0/2   | S2                         | 192.168.2.22       | /30                    |
-|                     | eth0/3   | Firewall 1 (DMZ)           | 10.10.50.1         | /27                    |
-|                     | eth1/0   | Border Leaf L1             | -                   | -                     |
-| **Firewall 1**      | eth0/1   | Border Leaf L2             | 10.10.50.1         | /27                    |
-|                     | eth0/2   | Servidor Web               | 10.10.50.2         | /27                    |
-|                     | eth0/3   | Servidor Correo            | 10.10.50.3         | /27                    |
-|                     | eth1/0   | Firewall 2                 | -                   | -                     |
-| **Firewall 2**      | eth0/1   | Firewall 1 (DMZ)           | -                   | -                     |
-|                     | eth0/2   | R2 (Internet)              | -                   | -                     |
+|                     | eth0/3   | Firewall 1                 | 192.168.7.2        | /30                    |
+|                     | eth1/0   | R1 (departamentos)         | 192.168.6.1        | /30                    |
+| **Firewall 1**      | eth0/1   | Border Leaf L2             | 192.168.7.1        | /30                    |
+|                     | eth0/2   | Border Leaf L1             | 192.168.8.2        | /30                    |
+|                     | eth0/3   | Servidor Web               | 10.10.50.2         | /27                    |
+|                     | eth1/0   | Servidor Correo            | 10.10.50.3         | /27                    |
+|                     | eth1/1   | Firewall 2                 | 192.168.5.2        | /30                    |
+| **Firewall 2**      | eth0/1   | Firewall 1                 | 192.168.5.1        | /30                    |
+|                     | eth0/2   | R2 (Internet)              | 192.168.4.1        | /30                    |
 | **S1 (Spine)**      | eth0/1   | L1                         | 192.168.1.1        | /30                    |
 |                     | eth0/2   | L2                         | 192.168.1.5        | /30                    |
 |                     | eth0/3   | L3                         | 192.168.1.9        | /30                    |
-|                     | eth0/4   | L4                         | 192.168.1.13       | /30                    |
-|                     | eth0/5   | Border Leaf L1             | 192.168.1.17       | /30                    |
-|                     | eth0/6   | Border Leaf L2             | 192.168.1.21       | /30                    |
+|                     | eth1/0   | L4                         | 192.168.1.13       | /30                    |
+|                     | eth1/1   | Border Leaf L1             | 192.168.1.17       | /30                    |
+|                     | eth1/2   | Border Leaf L2             | 192.168.1.21       | /30                    |
 | **S2 (Spine)**      | eth0/1   | L1                         | 192.168.2.1        | /30                    |
 |                     | eth0/2   | L2                         | 192.168.2.5        | /30                    |
 |                     | eth0/3   | L3                         | 192.168.2.9        | /30                    |
-|                     | eth0/4   | L4                         | 192.168.2.13       | /30                    |
-|                     | eth0/5   | Border Leaf L1             | 192.168.2.17       | /30                    |
-|                     | eth0/6   | Border Leaf L2             | 192.168.2.21       | /30                    |
-
+|                     | eth1/0   | L4                         | 192.168.2.13       | /30                    |
+|                     | eth1/1   | Border Leaf L1             | 192.168.2.17       | /30                    |
+|                     | eth1/2   | Border Leaf L2             | 192.168.2.21       | /30                    |
 | **R1**              | eth0/1   | Border Leaf L1             | 192.168.3.2        | /30                    |
+|                     | eth0/2   | Border Leaf L2             | 192.168.6.2        | /30                    |
+|                     | eth0/3   | otros departamentos        | no ip              | -                      |
 | **R2**              | eth0/1   | Firewall 2                 | 192.168.4.2        | /30                    |
-| **Firewall 2**      | eth0/2   | R2 (Internet)              | 192.168.4.1        | /30                    |
-| **Border Leaf L1**  | eth0/3   | R1 (departamentos)         | 192.168.3.1        | /30                    |
+|                     | eth0/2   | R2 (Internet)              | 102.20.13.230      | /24                    |
