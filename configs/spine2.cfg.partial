@@ -22,12 +22,12 @@ interface Ethernet1/0
  no shutdown
 !
 
-interface Ethernet1/2
+interface Ethernet1/1
  ip address 192.168.2.17 255.255.255.252
  no shutdown
 !
 
-interface Ethernet1/3
+interface Ethernet1/2
  ip address 192.168.2.21 255.255.255.252
  no shutdown
 !

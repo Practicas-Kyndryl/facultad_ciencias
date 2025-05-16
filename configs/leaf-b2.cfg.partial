@@ -3,22 +3,30 @@ enable
 configure terminal
 
 interface Ethernet0/1
+ description Spine S1
  ip address 192.168.1.22 255.255.255.252
+ no switchport
  no shutdown
 !
 
 interface Ethernet0/2
+description Spine S2
  ip address 192.168.2.22 255.255.255.252
+ no switchport
  no shutdown
 !
 
 interface Ethernet0/3
- ip address 10.10.50.1 255.255.255.224
+ description Firewall 1
+ ip address 192.168.7.2 255.255.255.252
+ no switchport
  no shutdown
 !
 
 interface Ethernet1/0
- no ip address
+ description R1 Departamentos
+ ip address 192.168.6.1 255.255.255.252
+ no switchport
  no shutdown
 !
 

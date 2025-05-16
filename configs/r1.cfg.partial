@@ -3,7 +3,19 @@ enable
 configure terminal
 
 interface Ethernet0/1
+ description Border Leaf L1
  ip address 192.168.3.2 255.255.255.252
+ no shutdown
+!
+
+interface Ethernet0/2
+ description Border Leaf L2
+ ip address 192.168.6.2 255.255.255.252
+ no shutdown
+!
+
+interface Ethernet0/3
+ no ip address 
  no shutdown
 !
 

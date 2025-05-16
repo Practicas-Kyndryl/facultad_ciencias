@@ -7,4 +7,11 @@ interface Ethernet0/1
  no shutdown
 !
 
+interface Ethernet0/2
+ ip address 102.20.13.230 255.255.255.0
+ no shutdown
+!
+
+ip route 0.0.0.0 0.0.0.0 192.168.4.1
+
 end
