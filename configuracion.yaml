@@ -17,37 +17,27 @@ topology:
     leaf1:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:L2-1.0.0
-      type: L2
       startup-config: configs/leaf1.cfg.partial
-
     leaf2:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:L2-1.0.0
-      type: L2
       startup-config: configs/leaf2.cfg.partial
-
     leaf3:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:L2-1.0.0
-      type: L2
       startup-config: configs/leaf3.cfg.partial
-
     leaf4:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:L2-1.0.0
-      type: L2
       startup-config: configs/leaf4.cfg.partial
 
     leaf-b1:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:L2-1.0.0
-      type: L2
       startup-config: configs/leaf-b1.cfg.partial
-
     leaf-b2:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:L2-1.0.0
-      type: L2
       startup-config: configs/leaf-b2.cfg.partial
 
     fw1:
@@ -75,90 +65,77 @@ topology:
     srv-ftp:
       kind: linux
       image: alpine:latest
-      network-mode: bridge
-      exec: 
-        - ip link set dev eth1 up
-        - ip addr add 10.10.20.2/24 dev eth1
       startup-config: configs/srv-ftp.cfg.partial
 
     srv-bd1:
       kind: linux
       image: alpine:latest
-      network-mode: bridge
-      exec: 
-        - ip link set dev eth1 up
-        - ip addr add 10.10.10.2/27 dev eth1
       startup-config: configs/srv-bd1.cfg.partial
 
     srv-web:
       kind: linux
       image: alpine:latest
-      network-mode: bridge
-      exec: 
-        - ip link set dev eth1 up
-        - ip addr add 10.10.50.2/27 dev eth1
       startup-config: configs/srv-web.cfg.partial
-
     srv-mail:
       kind: linux
       image: alpine:latest
-      network-mode: bridge
-      exec: 
-        - ip link set dev eth1 up
-        - ip addr add 10.10.50.3/27 dev eth1
       startup-config: configs/srv-mail.cfg.partial
 
     admin1:
       kind: linux
       image: alpine:latest
-      network-mode: bridge
-      exec: 
-        - ip link set dev eth1 up
-        - ip addr add 10.10.10.3/27 dev eth1
       startup-config: configs/admin1.cfg.partial
 
     lab1:
       kind: linux
       image: alpine:latest
-      network-mode: bridge
-      exec: 
-        - ip link set dev eth1 up
-        - ip addr add 10.10.20.3/24 dev eth1
       startup-config: configs/lab1.cfg.partial
 
     alumno1:
       kind: linux
       image: alpine:latest
-      network-mode: bridge
-      exec: 
-        - ip link set dev eth1 up
-        - ip addr add 10.10.20.101/24 dev eth1
       startup-config: configs/alumno1.cfg.partial
-
-  links:
-  - endpoints: ["leaf1:e0/1", "srv-bd1:eth1"]
-  - endpoints: ["leaf1:e0/2", "srv-ftp:eth1"]
-  - endpoints: ["leaf1:e0/3", "spine1:e0/1"]
-  - endpoints: ["leaf1:e1/1", "spine2:e0/1"]
-  - endpoints: ["leaf2:e0/1", "admin1:eth1"]
-  - endpoints: ["leaf2:e0/2", "spine1:e0/2"]
-  - endpoints: ["leaf2:e0/3", "spine2:e0/2"]
-  - endpoints: ["leaf3:e0/1", "lab1:eth1"]
-  - endpoints: ["leaf3:e0/2", "spine1:e0/3"]
-  - endpoints: ["leaf3:e0/3", "spine2:e0/3"]
-  - endpoints: ["leaf4:e1/1", "alumno1:eth1"]
-  - endpoints: ["leaf4:e0/2", "spine1:e1/0"]
-  - endpoints: ["leaf4:e0/3", "spine2:e1/0"]
-  - endpoints: ["leaf-b1:e0/1", "spine1:e1/1"]
-  - endpoints: ["leaf-b1:e0/2", "spine2:e1/1"]
-  - endpoints: ["leaf-b1:e0/3", "r1:e0/1"]
-  - endpoints: ["leaf-b1:e1/0", "fw1:eth2"]
-  - endpoints: ["leaf-b2:e0/1", "spine1:e1/2"]
-  - endpoints: ["leaf-b2:e0/2", "spine2:e1/2"]
-  - endpoints: ["leaf-b2:e0/3", "fw1:eth1"]
-  - endpoints: ["leaf-b2:e1/0", "r1:e0/2"]
-  - endpoints: ["fw1:eth3", "srv-web:eth1"]
-  - endpoints: ["fw1:eth4", "srv-mail:eth1"]
-  - endpoints: ["fw1:eth5", "fw2:eth1"]
-  - endpoints: ["fw2:eth2", "r2:e0/2"]
   
+  links:
+    # Conexiones Spine ↔ Leaf y B-Leaf
+    - endpoints: ["spine1:eth1", "leaf1:eth1"]
+    - endpoints: ["spine1:eth2", "leaf2:eth1"]
+    - endpoints: ["spine1:eth3", "leaf3:eth1"]
+    - endpoints: ["spine1:eth4", "leaf4:eth1"]
+    - endpoints: ["spine1:eth5", "leaf-b1:eth1"]
+    - endpoints: ["spine1:eth6", "leaf-b2:eth1"]
+    - endpoints: ["spine2:eth1", "leaf1:eth2"]
+    - endpoints: ["spine2:eth2", "leaf2:eth2"]
+    - endpoints: ["spine2:eth3", "leaf3:eth2"]
+    - endpoints: ["spine2:eth4", "leaf4:eth2"]
+    - endpoints: ["spine2:eth5", "leaf-b1:eth2"]
+    - endpoints: ["spine2:eth6", "leaf-b2:eth2"]
+
+    # Leaf1: FTP, BBDD
+    - endpoints: ["leaf1:eth3", "srv-ftp:eth1"]
+    - endpoints: ["leaf1:eth4", "srv-bd1:eth1"]
+
+    # Leaf2: Admin
+    - endpoints: ["leaf2:eth3", "admin1:eth1"]
+
+    # Leaf3: Laboratorio
+    - endpoints: ["leaf3:eth3", "lab1:eth1"]
+
+    # Leaf4: Alumno
+    - endpoints: ["leaf4:eth3", "alumno1:eth1"]
+
+    # Firewall y DMZ a leaf-b
+    - endpoints: ["fw1:eth1", "leaf-b1:eth3"]
+    - endpoints: ["fw1:eth2", "leaf-b2:eth3"]
+    - endpoints: ["fw2:eth1", "leaf-b1:eth4"]
+    - endpoints: ["fw2:eth2", "leaf-b2:eth4"]
+    - endpoints: ["srv-web:eth1", "fw2:eth3"]
+    - endpoints: ["srv-mail:eth1", "fw2:eth4"]
+
+    # R1 y R2
+    - endpoints: ["r1:eth1", "leaf-b1:eth5"]
+    - endpoints: ["r1:eth2", "leaf-b2:eth5"]
+    - endpoints: ["r2:eth1", "fw2:eth5"]
+
+    # FW1 y FW2
+    - endpoints: ["fw1:eth3", "fw2:eth6"]
