@@ -5,7 +5,7 @@ configure terminal
 vlan 10
  name ADMINISTRACION
 vlan 20
- name SERVIDORES
+ name ESTUDIANTES
 
 ! Interface VLAN 10 (SVI)
 interface Vlan10
@@ -54,6 +54,10 @@ interface Ethernet1/1
 ! Rutas estáticas hacia redes externas por ambos spines
 ip route 10.10.50.0 255.255.255.224 192.168.1.1
 ip route 10.10.50.0 255.255.255.224 192.168.2.1
+
+ip route 10.10.10.0 255.255.255.224 192.168.1.6
+ip route 10.10.10.0 255.255.255.224 192.168.2.6
+
 
 ! Ruta para subredes VLAN 10 y VLAN 20 queda local por las SVIs
 

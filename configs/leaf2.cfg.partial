@@ -5,7 +5,7 @@ configure terminal
 vlan 10
  name ADMINISTRACION
 vlan 20
- name SERVIDORES
+ name ESTUDIANTES
 
 ! Interface VLAN 10
 interface Vlan10
@@ -55,6 +55,10 @@ ip route 10.10.20.0 255.255.255.0 192.168.2.1
 
 ip route 10.10.10.0 255.255.255.224 192.168.1.5
 ip route 10.10.10.0 255.255.255.224 192.168.2.5
+
+ip route 10.10.10.0 255.255.255.224 192.168.1.2
+ip route 10.10.10.0 255.255.255.224 192.168.2.2
+
 
 ip route 192.168.0.0 255.255.0.0 192.168.1.5
 

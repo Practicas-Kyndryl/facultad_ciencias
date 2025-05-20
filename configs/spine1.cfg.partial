@@ -24,8 +24,13 @@ interface Ethernet0/3
 !
 
 ! Rutas estáticas para las subredes finales
-ip route 10.10.10.0 255.255.255.224 192.168.1.6  ! hacia Leaf2
-ip route 10.10.20.0 255.255.255.0 192.168.1.6
-ip route 10.10.50.0 255.255.255.0 192.168.1.6
+
+ip route 10.10.10.0 255.255.255.224 192.168.1.2  ! solo leaf1
+ip route 10.10.20.0 255.255.255.0 192.168.1.6    ! leaf2
+ip route 10.10.50.0 255.255.255.0 192.168.1.6    ! leaf2
+
+
+
+
 
 end
