@@ -2,50 +2,43 @@ enable
 configure terminal
 
 ! VLANs
-vlan 20
- name ESTUDIANTES
 vlan 10
  name ADMINISTRACION
+vlan 20
+ name ESTUDIANTES
 
-! Interface VLAN 20
+! Interface VLAN 20 (SVI para red de estudiantes)
 interface Vlan20
  ip address 10.10.20.1 255.255.255.224
  no shutdown
-!
 
-! Puerto acceso para PC Alumnos en VLAN 20
+! Puerto acceso a dispositivo VLAN 20
 interface Ethernet0/1
  description Conexión a PC Alumnos
  switchport mode access
  switchport access vlan 20
  no shutdown
-!
 
-! Interfaces hacia Spine como routed interfaces
+! Enlaces routed hacia los spines
 interface Ethernet0/2
  description Conexión a Spine S1
  no switchport
  ip address 192.168.1.14 255.255.255.252
  no shutdown
-!
 
 interface Ethernet0/3
  description Conexión a Spine S2
  no switchport
  ip address 192.168.2.14 255.255.255.252
  no shutdown
-!
 
-! Rutas estáticas
-ip route 10.10.10.0 255.255.255.224 192.168.1.13
-ip route 10.10.10.0 255.255.255.224 192.168.2.13
-
-ip route 10.10.20.0 255.255.255.0 192.168.1.1
-ip route 10.10.20.0 255.255.255.0 192.168.2.1
-
-ip route 10.10.50.0 255.255.255.224 192.168.1.13
-ip route 10.10.50.0 255.255.255.224 192.168.2.13
-
-ip route 192.168.0.0 255.255.0.0 192.168.1.13
+! OSPF
+router ospf 1
+ router-id 4.4.4.4
+ network 10.10.20.0 0.0.0.255 area 0
+ network 192.168.1.14 0.0.0.3 area 0
+ network 192.168.2.14 0.0.0.3 area 0
 
 end
+write memory
+

@@ -7,58 +7,51 @@ vlan 10
 vlan 20
  name ESTUDIANTES
 
-! Interface VLAN 10 (SVI)
+! Interfaz VLAN 10 (SVI) - administración
 interface Vlan10
  ip address 10.10.10.1 255.255.255.224
  no shutdown
-!
 
-! Interface VLAN 20 (SVI) para servidores
+! Interfaz VLAN 20 (SVI) - servidores
 interface Vlan20
  ip address 10.10.20.1 255.255.255.0
  no shutdown
-!
 
-! Puerto a base de datos - acceso VLAN 10
+! Puerto hacia srv-bd (Base de datos) - acceso VLAN 10
 interface Ethernet0/1
  description Conexión a Base de datos
  switchport mode access
  switchport access vlan 10
  no shutdown
-!
 
-! Puerto a servidor FTP - acceso VLAN 20
+! Puerto hacia srv-ftp - acceso VLAN 20
 interface Ethernet0/2
  description Conexión a servidor FTP
  switchport mode access
  switchport access vlan 20
  no shutdown
-!
 
-! Enlace a Spine S1 - routed link
+! Enlace a Spine1 (ruteado)
 interface Ethernet0/3
- description Conexión a Spine S1
+ description Conexión a Spine1
  no switchport
  ip address 192.168.1.2 255.255.255.252
  no shutdown
-!
 
-! Enlace a Spine S2 - routed link
+! Enlace a Spine2 (ruteado)
 interface Ethernet1/1
- description Conexión a Spine S2
+ description Conexión a Spine2
  no switchport
  ip address 192.168.2.2 255.255.255.252
  no shutdown
-!
 
-! Rutas estáticas hacia redes externas por ambos spines
-ip route 10.10.50.0 255.255.255.224 192.168.1.1
-ip route 10.10.50.0 255.255.255.224 192.168.2.1
-
-ip route 10.10.10.0 255.255.255.224 192.168.1.6
-ip route 10.10.10.0 255.255.255.224 192.168.2.6
-
-
-! Ruta para subredes VLAN 10 y VLAN 20 queda local por las SVIs
+! Enrutamiento dinámico con OSPF
+router ospf 1
+ router-id 1.1.1.1
+ network 10.10.10.0 0.0.0.31 area 0
+ network 10.10.20.0 0.0.0.255 area 0
+ network 192.168.1.2 0.0.0.0 area 0
+ network 192.168.2.2 0.0.0.0 area 0
 
 end
+write memory

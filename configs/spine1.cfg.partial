@@ -1,36 +1,36 @@
-! Spine S1
 enable
 configure terminal
 
+! Interfaces ruteadas hacia los leafs (no usan switchport)
 interface Ethernet0/1
  description Enlace a Leaf2 eth0/2
  no switchport
  ip address 192.168.1.5 255.255.255.252
  no shutdown
-!
 
 interface Ethernet0/2
  description Enlace a otro dispositivo (según topología)
  no switchport
  ip address 192.168.1.9 255.255.255.252
  no shutdown
-!
 
 interface Ethernet0/3
  description Otro enlace spine (si tienes más)
  no switchport
  ip address 192.168.1.13 255.255.255.252
  no shutdown
-!
 
-! Rutas estáticas para las subredes finales
+! Enlace a Leaf1 (añádelo si no está)
+interface Ethernet0/0
+ description Enlace a Leaf1 eth0/3
+ no switchport
+ ip address 192.168.1.1 255.255.255.252
+ no shutdown
 
-ip route 10.10.10.0 255.255.255.224 192.168.1.2  ! solo leaf1
-ip route 10.10.20.0 255.255.255.0 192.168.1.6    ! leaf2
-ip route 10.10.50.0 255.255.255.0 192.168.1.6    ! leaf2
-
-
-
-
+! Enrutamiento dinámico con OSPF
+router ospf 1
+ router-id 2.2.2.2
+ network 192.168.1.0 0.0.0.255 area 0
 
 end
+write memory

@@ -11,21 +11,18 @@ vlan 20
 interface Vlan10
  ip address 10.10.10.1 255.255.255.224
  no shutdown
-!
 
-! Interface VLAN 20 (agregada si es necesaria)
+! Interface VLAN 20
 interface Vlan20
  ip address 10.10.20.1 255.255.255.0
  no shutdown
-!
 
-! Puerto acceso a PC Administración (VLAN 10)
+! Puerto de acceso VLAN 10
 interface Ethernet0/1
  description Conexión a PC Administración
  switchport mode access
  switchport access vlan 10
  no shutdown
-!
 
 ! Enlace a Spine S1 - routed
 interface Ethernet0/2
@@ -33,7 +30,6 @@ interface Ethernet0/2
  no switchport
  ip address 192.168.1.6 255.255.255.252
  no shutdown
-!
 
 ! Enlace a Spine S2 - routed
 interface Ethernet0/3
@@ -41,25 +37,13 @@ interface Ethernet0/3
  no switchport
  ip address 192.168.2.6 255.255.255.252
  no shutdown
-!
 
-! Si tienes otros puertos trunk, usa otros interfaces distintos,
-! ejemplo Ethernet1/0 como trunk (si existe y es necesario)
-
-! Rutas estáticas
-ip route 10.10.50.0 255.255.255.224 192.168.1.5
-ip route 10.10.50.0 255.255.255.224 192.168.2.5
-
-ip route 10.10.20.0 255.255.255.0 192.168.1.1
-ip route 10.10.20.0 255.255.255.0 192.168.2.1
-
-ip route 10.10.10.0 255.255.255.224 192.168.1.5
-ip route 10.10.10.0 255.255.255.224 192.168.2.5
-
-ip route 10.10.10.0 255.255.255.224 192.168.1.2
-ip route 10.10.10.0 255.255.255.224 192.168.2.2
-
-
-ip route 192.168.0.0 255.255.0.0 192.168.1.5
+! Habilitar OSPF
+router ospf 1
+ router-id 3.3.3.3
+ network 10.10.10.0 0.0.0.255 area 0
+ network 10.10.20.0 0.0.0.255 area 0
+ network 192.168.1.0 0.0.0.255 area 0
+ network 192.168.2.0 0.0.0.255 area 0
 
 end
