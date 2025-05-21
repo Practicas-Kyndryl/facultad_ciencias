@@ -5,10 +5,12 @@ mgmt:
 
 topology:
   nodes:
+  
     spine1:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:1.0.0
       startup-config: configs/spine1.cfg.partial
+      
     spine2:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:1.0.0
@@ -79,7 +81,6 @@ topology:
       exec: 
         - ip link set dev eth1 up
         - ip addr add 10.10.20.2/24 dev eth1
-        - ip route add 10.10.20.3 via 10.10.20.1 dev eth1
       startup-config: configs/srv-ftp.cfg.partial
 
     srv-bd1:
@@ -89,7 +90,6 @@ topology:
       exec: 
         - ip link set dev eth1 up
         - ip addr add 10.10.10.2/27 dev eth1
-        - ip route add default via 10.10.10.1 dev eth1
       startup-config: configs/srv-bd1.cfg.partial
 
     srv-web:
@@ -117,7 +117,6 @@ topology:
       exec: 
         - ip link set dev eth1 up
         - ip addr add 10.10.10.3/27 dev eth1
-        - ip route add default via 10.10.10.1 dev eth1
       startup-config: configs/admin1.cfg.partial
 
     lab1:
@@ -127,7 +126,6 @@ topology:
       exec: 
         - ip link set dev eth1 up
         - ip addr add 10.10.20.3/24 dev eth1
-        - ip route add default via 10.10.20.1 dev eth1
       startup-config: configs/lab1.cfg.partial
 
     alumno1:
@@ -137,7 +135,6 @@ topology:
       exec: 
         - ip link set dev eth1 up
         - ip addr add 10.10.20.101/24 dev eth1
-        - ip route add default via 10.10.20.1 dev eth1
       startup-config: configs/alumno1.cfg.partial
 
   links:
