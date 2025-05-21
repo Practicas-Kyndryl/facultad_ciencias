@@ -40,7 +40,7 @@ interface Ethernet0/3
 
 ! Habilitar OSPF
 router ospf 1
- router-id 3.3.3.3
+ router-id 2.2.2.2
  network 10.10.10.0 0.0.0.255 area 0
  network 10.10.20.0 0.0.0.255 area 0
  network 192.168.1.0 0.0.0.255 area 0

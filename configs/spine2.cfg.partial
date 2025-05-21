@@ -28,7 +28,7 @@ interface Ethernet0/3
 
 ! Enrutamiento dinámico con OSPF
 router ospf 1
- router-id 4.4.4.4
+ router-id 6.6.6.6
  network 192.168.2.0 0.0.0.255 area 0
 
 end

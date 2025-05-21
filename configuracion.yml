@@ -90,6 +90,7 @@ topology:
       exec: 
         - ip link set dev eth1 up
         - ip addr add 10.10.10.2/27 dev eth1
+        - ip route add default via 10.10.10.1
       startup-config: configs/srv-bd1.cfg.partial
 
     srv-web:
@@ -117,6 +118,7 @@ topology:
       exec: 
         - ip link set dev eth1 up
         - ip addr add 10.10.10.3/27 dev eth1
+        - ip route add default via 10.10.10.1
       startup-config: configs/admin1.cfg.partial
 
     lab1:
