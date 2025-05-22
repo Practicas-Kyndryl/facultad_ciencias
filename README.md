@@ -229,17 +229,89 @@ Funcionalidad general:
 
 -R2 actúa como gateway o router hacia redes externas, con una ruta por defecto para el tráfico saliente hacia la red 192.168.4.1.
 
-Servidor Base de datos
+## Servidor Base de datos
 
-servidor ftp
+Subinterfaz: Ethernet0/1.0
 
-servidor mail
+VLAN: 1 (dot1Q 1)
 
-servidor web
+Dirección IP: 10.10.40.2/27
 
-Host admin1
+Red: 10.10.40.0/27
 
-host alumno1
+Finalidad: Servidor de base de datos, ubicado en una subred privada compartida con el servidor FTP.
 
-host lab1
+## Servidor Ftp
+
+Subinterfaz: Ethernet0/1.0
+
+VLAN: 1 (dot1Q 1)
+
+Dirección IP: 10.10.40.3/27
+
+Red: 10.10.40.0/27
+
+Finalidad: Servidor de transferencia de archivos, comparte red con el servidor BBDD.
+
+## Servidor Mail
+
+Subinterfaz: Ethernet0/1.0
+
+VLAN: 1 (dot1Q 1)
+
+Dirección IP: 192.168.100.10/24
+
+Red: 192.168.100.0/24
+
+Finalidad: Servidor de correo, en una subred independiente.
+
+## Servidor Web
+
+Subinterfaz: Ethernet0/1.0
+
+VLAN: 1 (dot1Q 1)
+
+Dirección IP: 192.168.200.10/24
+
+Red: 192.168.200.0/24
+
+Finalidad: Servidor web público o privado, también en su propia subred.
+
+## Host admin1
+
+Interfaz: Ethernet0/1
+
+Dirección IP: 10.10.10.2/27
+
+Red: 10.10.10.0/27
+
+Finalidad: Estación de administración o gestión.
+
+Nota: Conectado directamente sin VLAN. Segmentado del resto de equipos por subred.
+
+## Host alumno1
+
+Interfaz: Ethernet0/1.0 (subinterfaz)
+
+Encapsulación VLAN: dot1Q 1
+
+Dirección IP: 10.10.20.101/24
+
+Red: 10.10.20.0/24
+
+Finalidad: Estación de un usuario final o alumno.
+
+Nota: Utiliza VLAN 1 para segmentación. Comparte red con Lab1.
+
+## Host lab1
+
+Interfaz: Ethernet0/1
+
+Dirección IP: 10.10.20.2/24
+
+Red: 10.10.20.0/24
+
+Finalidad: Máquina de laboratorio, probablemente servidor de prácticas o entorno de desarrollo.
+
+Nota: Conectado directamente, sin subinterfaz ni VLAN explícita. Está en la misma red que Alumno1.
 
