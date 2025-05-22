@@ -277,7 +277,7 @@ Red: 192.168.200.0/24
 
 Finalidad: Servidor web público o privado, también en su propia subred.
 
-## Host admin1
+## Host Admin1
 
 Interfaz: Ethernet0/1
 
@@ -289,7 +289,7 @@ Finalidad: Estación de administración o gestión.
 
 Nota: Conectado directamente sin VLAN. Segmentado del resto de equipos por subred.
 
-## Host alumno1
+## Host Alumno1
 
 Interfaz: Ethernet0/1.0 (subinterfaz)
 
@@ -303,7 +303,7 @@ Finalidad: Estación de un usuario final o alumno.
 
 Nota: Utiliza VLAN 1 para segmentación. Comparte red con Lab1.
 
-## Host lab1
+## Host Lab1
 
 Interfaz: Ethernet0/1
 
