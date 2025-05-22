@@ -239,11 +239,16 @@ Funcionalidad general:
 -R2 actúa como gateway o router hacia redes externas, con una ruta por defecto para el tráfico saliente hacia la red 192.168.4.1.
 
 Servidor Base de datos
+
 servidor ftp
+
 servidor mail
+
 servidor web
 
 Host admin1
+
 host alumno1
+
 host lab1
 
