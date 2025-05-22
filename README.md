@@ -128,51 +128,40 @@ Esta red parece ser un enlace punto a punto, posiblemente entre el Firewall2 y a
 Al igual que Firewall 1, no hay rutas ni políticas configuradas.
 
 
-Configuración de Leaf B1 y B2
+LeadB1 (Border Leaf L1):
 
-🔧 Interfaces de conexión a Spines:
-Leaf B1
+Configura varias interfaces Ethernet en modo ruteado (sin switchport), todas activas.
 
-Eth0/1 → Spine S1: IP 192.168.1.18/30
+Enlaces con IPs en subredes /30 hacia:
 
-Eth0/2 → Spine S2: IP 192.168.2.18/30
+Spine S1 (Ethernet0/1) con IP 192.168.1.18/30
 
-Leaf B2
+Spine S2 (Ethernet0/2) con IP 192.168.2.18/30
 
-Eth0/1 → Spine S1: IP 192.168.1.22/30
+Router R1 Departamentos (Ethernet0/3) con IP 192.168.3.1/30
 
-Eth0/2 → Spine S2: IP 192.168.2.22/30
+Firewall 1 (Ethernet1/0) con IP 192.168.8.1/30
 
-👉 Esto asegura conectividad redundante al núcleo Spine.
+Esta configuración permite conectar la red interna de departamentos y firewall con la infraestructura Spine.
 
-🔧 Interfaces hacia el firewall:
-Leaf B1
+LeadB2 (Border Leaf L2):
 
-Eth1/0 → Firewall 1: IP 192.168.8.1/30
+Interfaces Ethernet configuradas en modo ruteado y activas.
 
-Leaf B2
+Enlaces con IPs en subredes /30 hacia:
 
-Eth0/3 → Firewall 1: IP 192.168.7.2/30
+Spine S1 (Ethernet0/1) con IP 192.168.1.22/30
 
-👉 Estas conexiones permiten controlar el tráfico entrante y saliente mediante el firewall.
+Spine S2 (Ethernet0/2) con IP 192.168.2.22/30
 
-🔧 Interfaces hacia el Router R1 (departamentos):
-Leaf B1
+Firewall 1 (Ethernet0/3) con IP 192.168.7.2/30
 
-Eth0/3 → R1: IP 192.168.3.1/30
+Router R1 Departamentos (Ethernet1/0) con IP 192.168.6.1/30
 
-Leaf B2
+Conectividad similar a LeadB1 pero con direcciones IP diferentes, integrando firewall y departamentos hacia Spine.
 
-Eth1/0 → R1: IP 192.168.6.1/30
-
-👉 Esto conecta el datacenter con redes corporativas o de usuarios internos.
-
-⚙️ Configuraciones comunes:
-Todas las interfaces están en modo "no switchport", es decir, trabajan en modo L3 (enrutamiento).
-
-Las interfaces están activadas con no shutdown.
-
-Todas tienen una dirección IP /30, lo que indica enlaces punto a punto.
+Función general:
+Ambos Border Leafs actúan como puntos de interconexión entre la red Spine, routers departamentales y el firewall, usando enlaces punto a punto con IPs estáticas para asegurar la segmentación y el control del tráfico.
 
 Spine1:
 
