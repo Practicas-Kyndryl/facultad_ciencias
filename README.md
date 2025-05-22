@@ -39,7 +39,7 @@ Primero sólo pondremos un host en cada leaf. Utilizaremos un router en el punto
 
 # Configuracion de cada dispositivo 
 
-LEAF1
+## LEAF1
 
 VLANs: Crea VLAN 10 (Administración) y VLAN 20 (Estudiantes).
 
