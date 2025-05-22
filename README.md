@@ -1,7 +1,7 @@
 # facultad_ciencias
 # Topología de la Facultad de Ciencias 
 
-![](images/facultad_ciencias_topología.png)
+![](images/facultad_ciencias_topo.png)
 
 # Descripcion de la topología
 
@@ -112,11 +112,8 @@ Ethernet0/2: 10.10.50.2
 
 Ethernet0/3: 10.10.50.3
 
-También tiene una interfaz encendida (Ethernet1/0) sin dirección IP.
+Este firewall es la frontera entre la red LAN y el exterior. Tiene conectado directamente el DMZ y la salida al otro firewall.
 
-Esta configuración sugiere que está pensado para conectar distintas zonas internas o perimetrales (por ejemplo, DMZ, red de usuarios, red de servidores).
-
-No hay configuraciones de rutas ni políticas mostradas (ni estáticas ni dinámicas).
 
 ## Firewall 2
 Tenemos 2 interfaces activas en la red 192.168.4.0/30:
@@ -125,9 +122,7 @@ Ethernet0/1: 192.168.4.2
 
 Ethernet0/2: 192.168.4.1
 
-Esta red parece ser un enlace punto a punto, posiblemente entre el Firewall2 y algún router de borde o ISP.
-
-Al igual que Firewall 1, no hay rutas ni políticas configuradas.
+Esta red es un enlace punto a punto entre el Firewall 2 y el Firewall 1.
 
 
 ## LeadB1 (Border Leaf L1):
@@ -143,6 +138,8 @@ Spine S2 (Ethernet0/2) con IP 192.168.2.18/30
 Router R1 Departamentos (Ethernet0/3) con IP 192.168.3.1/30
 
 Firewall 1 (Ethernet1/0) con IP 192.168.8.1/30
+
+También envía el tráfico a internet 0.0.0.0 0.0.0.0 hacia el Firewall 1
 
 Esta configuración permite conectar la red interna de departamentos y firewall con la infraestructura Spine.
 
@@ -162,6 +159,8 @@ Router R1 Departamentos (Ethernet1/0) con IP 192.168.6.1/30
 
 Conectividad similar a LeadB1 pero con direcciones IP diferentes, integrando firewall y departamentos hacia Spine.
 
+Al igual que el 1 envía el tráfico a internet.
+
 Función general:
 Ambos Border Leafs actúan como puntos de interconexión entre la red Spine, routers departamentales y el firewall, usando enlaces punto a punto con IPs estáticas para asegurar la segmentación y el control del tráfico.
 
@@ -179,7 +178,6 @@ Router ID: 5.5.5.5
 
 Red anunciada: 192.168.1.0/24 en área 0
 
-Configuración guardada.
 
 ## Spine2:
 
@@ -191,9 +189,8 @@ Router ID para OSPF: 6.6.6.6
 
 OSPF anuncia la red 192.168.2.0/24 en área 0.
 
-Configuración guardada.
 
-Ambos switches Spine actúan como routers para el tráfico entre Leafs, usando OSPF para la convergencia y el intercambio de rutas en el área 0, con interfaces punto a punto en enlaces directos y con IPs estáticas asignadas.
+Ambos switches de capa 3 Spine actúan como routers para el tráfico entre Leafs, usando OSPF para la convergencia y el intercambio de rutas en el área 0, con interfaces punto a punto en enlaces directos y con IPs estáticas asignadas.
 
 ## R1 (Router Border Leaf):
 
@@ -235,13 +232,37 @@ Subinterfaz: Ethernet0/1.0
 
 VLAN: 1 (dot1Q 1)
 
-Dirección IP: 10.10.40.2/27
+Dirección IP: 10.10.10.2/27
 
-Red: 10.10.40.0/27
+Red: 10.10.10.0/27
 
-Finalidad: Servidor de base de datos, ubicado en una subred privada compartida con el servidor FTP.
+Finalidad: Servidor de base de datos que comparte Vlan con el pc admin.
 
 ## Servidor Ftp
+
+Subinterfaz: Ethernet0/1.0
+
+VLAN: 1 (dot1Q 1)
+
+Dirección IP: 10.10.20.3/27
+
+Red: 10.10.20.0/27
+
+Finalidad: Servidor de transferencia de archivos para los alumnos, comparte Vlan con los pc de lab y alumnos.
+
+## Servidor Mail
+
+Subinterfaz: Ethernet0/1.0
+
+VLAN: 1 (dot1Q 1)
+
+Dirección IP: 10.10.40.2/27
+
+Red: 10.10.10.0/27
+
+Finalidad: Servidor de correo público que se puede tanto desde internet como desde la LAN.
+
+## Servidor Web
 
 Subinterfaz: Ethernet0/1.0
 
@@ -251,31 +272,7 @@ Dirección IP: 10.10.40.3/27
 
 Red: 10.10.40.0/27
 
-Finalidad: Servidor de transferencia de archivos, comparte red con el servidor BBDD.
-
-## Servidor Mail
-
-Subinterfaz: Ethernet0/1.0
-
-VLAN: 1 (dot1Q 1)
-
-Dirección IP: 192.168.100.10/24
-
-Red: 192.168.100.0/24
-
-Finalidad: Servidor de correo, en una subred independiente.
-
-## Servidor Web
-
-Subinterfaz: Ethernet0/1.0
-
-VLAN: 1 (dot1Q 1)
-
-Dirección IP: 192.168.200.10/24
-
-Red: 192.168.200.0/24
-
-Finalidad: Servidor web público o privado, también en su propia subred.
+Finalidad: Servidor web público que se puede tanto desde internet como desde la LAN.
 
 ## Host Admin1
 
@@ -287,7 +284,7 @@ Red: 10.10.10.0/27
 
 Finalidad: Estación de administración o gestión.
 
-Nota: Conectado directamente sin VLAN. Segmentado del resto de equipos por subred.
+Está dentro de la Vlan 10 y se puede conectar con el servidor de Base de Datos.
 
 ## Host Alumno1
 
@@ -301,7 +298,7 @@ Red: 10.10.20.0/24
 
 Finalidad: Estación de un usuario final o alumno.
 
-Nota: Utiliza VLAN 1 para segmentación. Comparte red con Lab1.
+Comparte red con Lab1.
 
 ## Host Lab1
 
@@ -311,7 +308,7 @@ Dirección IP: 10.10.20.2/24
 
 Red: 10.10.20.0/24
 
-Finalidad: Máquina de laboratorio, probablemente servidor de prácticas o entorno de desarrollo.
+Finalidad: Es un pc de Laboratorio como ejemplo de los que podía haber en un clase.
 
-Nota: Conectado directamente, sin subinterfaz ni VLAN explícita. Está en la misma red que Alumno1.
+Está en la misma red que Alumno1.
 
