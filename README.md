@@ -40,6 +40,7 @@ Primero sólo pondremos un host en cada leaf. Utilizaremos un router en el punto
 # Configuracion de cada dispositivo 
 
 LEAF1
+
 VLANs: Crea VLAN 10 (Administración) y VLAN 20 (Estudiantes).
 
 SVI: Configura interfaces VLAN10 y VLAN20 con direcciones IP, permitiendo enrutamiento entre VLANs.
@@ -57,6 +58,7 @@ OSPF: Activa OSPF para distribuir rutas en las redes internas y enlaces troncale
 🟢 Rol: Actúa como punto de acceso para servicios (BD y FTP), conecta las VLANs a la red general y participa en el enrutamiento dinámico.
 
 LEAF2
+
 VLANs: Igual que leaf1 (ADMINISTRACIÓN y ESTUDIANTES).
 
 SVI: Interfaces VLAN10 y VLAN20 con IPs.
