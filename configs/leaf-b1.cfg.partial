@@ -31,4 +31,6 @@ interface Ethernet1/0
  no shutdown
 !
 
+ip route 0.0.0.0 0.0.0.0 192.168.8.1
+
 end

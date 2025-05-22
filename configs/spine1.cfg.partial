@@ -1,27 +1,25 @@
 enable
 configure terminal
 
-! Interfaces ruteadas hacia los leafs (no usan switchport)
-interface Ethernet0/1
+! Interfaces ruteadas hacia los leafs 
+interface Ethernet0/2
  description Enlace a Leaf2 eth0/2
  no switchport
  ip address 192.168.1.5 255.255.255.252
  no shutdown
 
-interface Ethernet0/2
- description Enlace a otro dispositivo (según topología)
+interface Ethernet0/3
  no switchport
  ip address 192.168.1.9 255.255.255.252
  no shutdown
 
-interface Ethernet0/3
- description Otro enlace spine (si tienes más)
+interface Ethernet1/0
  no switchport
  ip address 192.168.1.13 255.255.255.252
  no shutdown
 
-! Enlace a Leaf1 (añádelo si no está)
-interface Ethernet0/0
+! Enlace a Leaf1 
+interface Ethernet0/1
  description Enlace a Leaf1 eth0/3
  no switchport
  ip address 192.168.1.1 255.255.255.252
