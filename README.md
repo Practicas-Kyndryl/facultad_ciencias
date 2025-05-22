@@ -233,9 +233,10 @@ Ruta por defecto (0.0.0.0/0) apunta a 192.168.4.1, encaminando todo el tráfico 
 Interfaces activadas.
 
 Funcionalidad general:
-    R1 se encarga de la interconexión interna entre Leafs fronterizos, con enlaces punto a punto.
 
-    R2 actúa como gateway o router hacia redes externas, con una ruta por defecto para el tráfico saliente hacia la red 192.168.4.1.
+-R1 se encarga de la interconexión interna entre Leafs fronterizos, con enlaces punto a punto.
+
+-R2 actúa como gateway o router hacia redes externas, con una ruta por defecto para el tráfico saliente hacia la red 192.168.4.1.
 
 Servidor Base de datos
 servidor ftp
