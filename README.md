@@ -57,7 +57,7 @@ OSPF: Activa OSPF para distribuir rutas en las redes internas y enlaces troncale
 
 🟢 Rol: Actúa como punto de acceso para servicios (BD y FTP), conecta las VLANs a la red general y participa en el enrutamiento dinámico.
 
-LEAF2
+## LEAF2
 
 VLANs: Igual que leaf1 (ADMINISTRACIÓN y ESTUDIANTES).
 
@@ -73,7 +73,7 @@ OSPF: Incluye las VLANs y enlaces troncales. ID del router: 2.2.2.2.
 
 🟢 Rol: Brinda conectividad a un host administrativo, integra sus VLANs a la red troncal y publica sus rutas con OSPF.
 
-LEAF3
+## LEAF3
 
 VLANs: Crea las VLAN 10 y 20, pero solo configura SVI para VLAN 20.
 
@@ -87,7 +87,7 @@ OSPF: Publica su red de estudiantes y los enlaces ruteados. ID del router: 3.3.3
 
 🟢 Rol: Conecta un laboratorio para estudiantes a la red general, participa en OSPF con rutas de VLAN 20 y enlaces a los spines.
 
-LEAF4
+## LEAF4
 
 VLANs: Igual que los demás (10 y 20), pero solo usa VLAN 20.
 
@@ -103,7 +103,7 @@ OSPF: Publica solo la red de estudiantes (VLAN 20) y sus enlaces. ID del router:
 
 🟢 Rol: Conecta un equipo de estudiantes, anuncia su red mediante OSPF y se integra a la malla de la red Leaf-Spine.
 
-🔥Firewall 1
+## Firewall 1
 Tenemos 3 interfaces activas con IPs en la red 10.10.50.0/27:
 
 Ethernet0/1: 10.10.50.1
@@ -118,7 +118,7 @@ Esta configuración sugiere que está pensado para conectar distintas zonas inte
 
 No hay configuraciones de rutas ni políticas mostradas (ni estáticas ni dinámicas).
 
-🔥Firewall 2
+## Firewall 2
 Tenemos 2 interfaces activas en la red 192.168.4.0/30:
 
 Ethernet0/1: 192.168.4.2
@@ -130,7 +130,7 @@ Esta red parece ser un enlace punto a punto, posiblemente entre el Firewall2 y a
 Al igual que Firewall 1, no hay rutas ni políticas configuradas.
 
 
-LeadB1 (Border Leaf L1):
+## LeadB1 (Border Leaf L1):
 
 Configura varias interfaces Ethernet en modo ruteado (sin switchport), todas activas.
 
@@ -146,7 +146,7 @@ Firewall 1 (Ethernet1/0) con IP 192.168.8.1/30
 
 Esta configuración permite conectar la red interna de departamentos y firewall con la infraestructura Spine.
 
-LeadB2 (Border Leaf L2):
+## LeadB2 (Border Leaf L2):
 
 Interfaces Ethernet configuradas en modo ruteado y activas.
 
@@ -165,7 +165,7 @@ Conectividad similar a LeadB1 pero con direcciones IP diferentes, integrando fir
 Función general:
 Ambos Border Leafs actúan como puntos de interconexión entre la red Spine, routers departamentales y el firewall, usando enlaces punto a punto con IPs estáticas para asegurar la segmentación y el control del tráfico.
 
-Spine1:
+## Spine1:
 
 Configura varias interfaces Ethernet como enlaces ruteados hacia los switches Leaf, deshabilitando el modo switchport para usar IPs directas.
 
@@ -181,7 +181,7 @@ Red anunciada: 192.168.1.0/24 en área 0
 
 Configuración guardada.
 
-Spine2:
+## Spine2:
 
 Similar a Spine1, con interfaces Ethernet configuradas en modo ruteado (no switchport) hacia Leafs y otros dispositivos según topología.
 
@@ -195,7 +195,7 @@ Configuración guardada.
 
 Ambos switches Spine actúan como routers para el tráfico entre Leafs, usando OSPF para la convergencia y el intercambio de rutas en el área 0, con interfaces punto a punto en enlaces directos y con IPs estáticas asignadas.
 
-R1 (Router Border Leaf):
+## R1 (Router Border Leaf):
 
 Interfaces configuradas:
 
@@ -209,7 +209,7 @@ Todas las interfaces están activadas (no shutdown).
 
 Router orientado a conectar Leafs fronterizos (borders).
 
-R2 (Router Gateway):
+## R2 (Router Gateway):
 
 Interfaces configuradas:
 
